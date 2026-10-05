@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <meta name="theme-color" content="#101828">
+
+  <title>RideGo Driver</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="ridegodriver.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+
+    <div class="brand">
+      <div class="brand-icon">🚕</div>
+
+      <div>
+        <div class="brand-name">RideGo</div>
+        <div class="brand-subtitle">Driver</div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="profile-btn"
+      id="headerProfileBtn"
+      aria-label="Open profile"
+    >
+      👤
+    </button>
+
+  </header>
+
+
+  <!-- LOGIN -->
+  <section id="loginPage" class="login-page">
+
+    <div class="login-logo">🚕</div>
+
+    <h1>Welcome Back</h1>
+
+    <p class="login-subtitle">
+      Login to continue driving with RideGo
+    </p>
+
+    <form id="loginForm" class="login-form">
+
+      <div class="input-group">
+
+        <label for="mobile">
+          Mobile Number
+        </label>
+
+        <div class="input-wrap">
+
+          <span class="input-icon">📱</span>
+
+          <input
+            type="tel"
+            id="mobile"
+            placeholder="Enter 10 digit mobile number"
+            maxlength="10"
+            inputmode="numeric"
+            autocomplete="tel"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <div class="input-wrap">
+
+          <span class="input-icon">🔒</span>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="primary-btn login-btn"
+      >
+        Login
+      </button>
+
+    </form>
+
+
+    <div class="demo-note">
+
+      <span>ℹ️</span>
+
+      Demo login: use any valid 10-digit mobile number and any password.
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN APP -->
+  <main id="mainApp" class="hidden">
+
+
+    <!-- DASHBOARD -->
+    <section id="dashboardPage" class="page active">
+
+      <div class="welcome">
+
+        <div>
+
+          <p class="eyebrow">
+            DRIVER DASHBOARD
+          </p>
+
+          <h2>
+            <span id="welcomeGreeting">
+              Good Morning
+            </span>
+            👋
+          </h2>
+
+          <p>
+            Ready to earn today?
+          </p>
+
+        </div>
+
+        <div class="welcome-badge">
+          🚗
+        </div>
+
+      </div>
+
+
+      <!-- ONLINE -->
+      <div class="online-card">
+
+        <div class="online-info">
+
+          <div class="status-dot"></div>
+
+          <div>
+
+            <h3 id="onlineTitle">
+              You're Offline
+            </h3>
+
+            <p id="onlineText">
+              Go online to receive ride requests
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="onlineToggle"
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+      </div>
+
+
+      <!-- EARNINGS -->
+      <div class="earning-card">
+
+        <div class="earning-card-top">
+
+          <div>
+
+            <p>
+              Today's Earnings
+            </p>
+
+            <h2 id="todayEarning">
+              ₹0
+            </h2>
+
+          </div>
+
+          <div class="earning-icon">
+            ₹
+          </div>
+
+        </div>
+
+
+        <div class="earning-bottom">
+
+          <div>
+
+            <strong id="completedCount">
+              0
+            </strong>
+
+            <span>
+              Completed Rides
+            </span>
+
+          </div>
+
+
+          <div class="earning-status">
+
+            <span id="earningStatus">
+              Start earning
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- REQUEST HEADER -->
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            LIVE REQUESTS
+          </p>
+
+          <h3>
+            Ride Requests
+          </h3>
+
+        </div>
+
+
+        <span class="live-tag">
+
+          <span></span>
+
+          LIVE
+
+        </span>
+
+      </div>
+
+
+      <!-- EMPTY REQUEST -->
+      <div
+        id="noRide"
+        class="empty-card"
+      >
+
+        <div class="empty-icon">
+          🚘
+        </div>
+
+        <h3>
+          No Ride Requests
+        </h3>
+
+        <p id="noRideText">
+          Go online to start receiving ride requests.
+        </p>
+
+      </div>
+
+
+      <!-- REQUEST -->
+      <div
+        id="rideRequest"
+        class="ride-request hidden"
+      >
+
+        <div class="request-header">
+
+          <div>
+
+            <span class="request-label">
+              NEW RIDE REQUEST
+            </span>
+
+            <h3>
+              Passenger Ride
+            </h3>
+
+          </div>
+
+
+          <div class="fare-box">
+
+            <span>
+              Fare
+            </span>
+
+            <strong id="requestFare">
+              ₹320
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="location-block">
+
+          <div class="location-row">
+
+            <div class="location-marker pickup-marker">
+              ●
+            </div>
+
+            <div class="location-content">
+
+              <span>
+                PICKUP
+              </span>
+
+              <strong id="pickupLocation">
+                Howrah Railway Station
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="route-line"></div>
+
+
+          <div class="location-row">
+
+            <div class="location-marker drop-marker">
+              ●
+            </div>
+
+            <div class="location-content">
+
+              <span>
+                DROP
+              </span>
+
+              <strong id="dropLocation">
+                Park Street, Kolkata
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="ride-info">
+
+          <div>
+            <span>Distance</span>
+            <strong id="requestDistance">14.8 km</strong>
+          </div>
+
+          <div>
+            <span>Duration</span>
+            <strong id="requestDuration">38 min</strong>
+          </div>
+
+          <div>
+            <span>Payment</span>
+            <strong id="requestType">Cash</strong>
+          </div>
+
+        </div>
+
+
+        <div class="button-row">
+
+          <button
+            type="button"
+            id="rejectBtn"
+            class="secondary-btn reject-btn"
+          >
+            ✕ Reject
+          </button>
+
+          <button
+            type="button"
+            id="acceptBtn"
+            class="primary-btn accept-btn"
+          >
+            ✓ Accept Ride
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACTIVE RIDE -->
+      <div
+        id="activeRide"
+        class="active-ride hidden"
+      >
+
+        <div class="active-header">
+
+          <div>
+
+            <span class="request-label">
+              ACTIVE RIDE
+            </span>
+
+            <h3>
+              Passenger Trip
+            </h3>
+
+          </div>
+
+          <span
+            id="tripStatusTag"
+            class="trip-status"
+          >
+            Accepted
+          </span>
+
+        </div>
+
+
+        <!-- MAP -->
+        <div class="ride-map">
+
+          <div class="map-grid"></div>
+
+          <div class="map-road road-one"></div>
+          <div class="map-road road-two"></div>
+          <div class="map-road road-three"></div>
+
+          <div class="map-route"></div>
+
+          <div
+            id="driverMapMarker"
+            class="map-marker driver-marker"
+          >
+            🚕
+          </div>
+
+          <div class="map-marker pickup-map-marker">
+            <span>●</span>
+          </div>
+
+          <div class="map-marker drop-map-marker">
+            <span>●</span>
+          </div>
+
+          <div class="map-label pickup-label">
+            Pickup
+          </div>
+
+          <div class="map-label drop-label">
+            Drop
+          </div>
+
+          <div class="map-location">
+            📍
+            <span id="mapLocationText">
+              Driver location
+            </span>
+          </div>
+
+          <button
+            type="button"
+            id="locateBtn"
+            class="map-control"
+          >
+            ◎
+          </button>
+
+        </div>
+
+
+        <!-- PASSENGER -->
+        <div class="passenger-card">
+
+          <div class="passenger-avatar">
+            👤
+          </div>
+
+          <div class="passenger-details">
+
+            <span>
+              PASSENGER
+            </span>
+
+            <strong id="passengerName">
+              Rahul Sharma
+            </strong>
+
+            <small>
+              ⭐ 4.8 • 26 rides
+            </small>
+
+          </div>
+
+
+          <div class="passenger-actions">
+
+            <button
+              type="button"
+              id="callPassengerBtn"
+              class="circle-action"
+              title="Call Passenger"
+            >
+              📞
+            </button>
+
+            <button
+              type="button"
+              id="messagePassengerBtn"
+              class="circle-action"
+              title="Message Passenger"
+            >
+              💬
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ROUTE -->
+        <div class="active-route">
+
+          <div class="route-point pickup-point">
+
+            <div class="route-dot">
+              ●
+            </div>
+
+            <div>
+
+              <span>
+                PICKUP
+              </span>
+
+              <strong id="activePickup">
+                Howrah Railway Station
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="route-connector"></div>
+
+
+          <div class="route-point drop-point">
+
+            <div class="route-dot">
+              ●
+            </div>
+
+            <div>
+
+              <span>
+                DROP
+              </span>
+
+              <strong id="activeDrop">
+                Park Street, Kolkata
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FARE -->
+        <div class="trip-summary">
+
+          <div>
+
+            <span>
+              Trip Fare
+            </span>
+
+            <strong id="activeFare">
+              ₹320
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Distance
+            </span>
+
+            <strong id="activeDistance">
+              14.8 km
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Est. Time
+            </span>
+
+            <strong id="activeDuration">
+              38 min
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+        <div class="payment-row">
+
+          <div>
+
+            <span>
+              PAYMENT METHOD
+            </span>
+
+            <strong id="activePayment">
+              💵 Cash
+            </strong>
+
+          </div>
+
+          <span class="payment-status">
+            Pay after trip
+          </span>
+
+        </div>
+
+
+        <!-- ACTION -->
+        <button
+          type="button"
+          id="tripActionBtn"
+          class="primary-btn full-btn trip-main-btn"
+        >
+          Go to Pickup
+        </button>
+
+
+        <!-- SOS -->
+        <button
+          type="button"
+          id="sosBtn"
+          class="sos-btn"
+        >
+          🆘 Emergency / SOS
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- EARNINGS -->
+    <section
+      id="earningsPage"
+      class="page"
+    >
+
+      <div class="page-title">
+
+        <p class="eyebrow">
+          FINANCIAL OVERVIEW
+        </p>
+
+        <h2>
+          Earnings
+        </h2>
+
+        <p>
+          Track your driving income.
+        </p>
+
+      </div>
+
+
+      <div class="earning-card large-earning">
+
+        <div class="earning-card-top">
+
+          <div>
+
+            <p>
+              Total Earnings
+            </p>
+
+            <h2 id="earningsTotal">
+              ₹0
+            </h2>
+
+          </div>
+
+          <div class="earning-icon">
+            ₹
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-box">
+
+          <span class="stat-icon">
+            🚗
+          </span>
+
+          <strong id="earningsCompleted">
+            0
+          </strong>
+
+          <span>
+            Completed
+          </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+          <span class="stat-icon">
+            💰
+          </span>
+
+          <strong id="averageFare">
+            ₹0
+          </strong>
+
+          <span>
+            Avg. Fare
+          </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+          <span class="stat-icon">
+            📊
+          </span>
+
+          <strong id="totalRides">
+            0
+          </strong>
+
+          <span>
+            Total Rides
+          </span>
+
+        </div>
+
+
+        <div class="stat-box">
+
+          <span class="stat-icon">
+            🏆
+          </span>
+
+          <strong id="totalEarnings">
+            ₹0
+          </strong>
+
+          <span>
+            Lifetime
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            RECENT ACTIVITY
+          </p>
+
+          <h3>
+            Earning History
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="earningHistory"
+        class="card history-card"
+      ></div>
+
+    </section>
+
+
+    <!-- HISTORY -->
+    <section
+      id="historyPage"
+      class="page"
+    >
+
+      <div class="page-title">
+
+        <p class="eyebrow">
+          YOUR ACTIVITY
+        </p>
+
+        <h2>
+          Ride History
+        </h2>
+
+        <p>
+          View your completed rides.
+        </p>
+
+      </div>
+
+
+      <div
+        id="historyList"
+        class="card history-card"
+      ></div>
+
+    </section>
+
+
+    <!-- PROFILE -->
+    <section
+      id="profilePage"
+      class="page"
+    >
+
+      <div class="page-title">
+
+        <p class="eyebrow">
+          ACCOUNT
+        </p>
+
+        <h2>
+          My Profile
+        </h2>
+
+        <p>
+          Manage your driver information.
+        </p>
+
+      </div>
+
+
+      <div class="profile-card">
+
+        <div class="avatar">
+          👤
+        </div>
+
+        <div class="profile-main">
+
+          <h3 id="profileName">
+            RideGo Driver
+          </h3>
+
+          <p id="profileMobile">
+            +91 XXXXX XXXXX
+          </p>
+
+          <span class="verified">
+            ✓ Verified Driver
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-title">
+          Personal Information
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="driverName">
+            Driver Name
+          </label>
+
+          <input
+            type="text"
+            id="driverName"
+            placeholder="Enter your name"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="driverVehicle">
+            Vehicle Details
+          </label>
+
+          <input
+            type="text"
+            id="driverVehicle"
+            placeholder="Example: WB 01 AB 1234"
+          >
+
+        </div>
+
+
+        <button
+          type="button"
+          id="saveProfileBtn"
+          class="primary-btn full-btn"
+        >
+          Save Profile
+        </button>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="logoutBtn"
+        class="logout-btn"
+      >
+        🚪 Logout
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- BOTTOM NAV -->
+  <nav
+    id="bottomNav"
+    class="bottom-nav hidden"
+  >
+
+    <button
+      type="button"
+      class="nav-item active"
+      data-page="dashboardPage"
+    >
+
+      <span class="nav-icon">
+        ⌂
+      </span>
+
+      <label>
+        Home
+      </label>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="nav-item"
+      data-page="earningsPage"
+    >
+
+      <span class="nav-icon">
+        ₹
+      </span>
+
+      <label>
+        Earnings
+      </label>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="nav-item"
+      data-page="historyPage"
+    >
+
+      <span class="nav-icon">
+        ▤
+      </span>
+
+      <label>
+        History
+      </label>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="nav-item"
+      data-page="profilePage"
+    >
+
+      <span class="nav-icon">
+        ●
+      </span>
+
+      <label>
+        Profile
+      </label>
+
+    </button>
+
+  </nav>
+
+
+  <!-- TRIP COMPLETE MODAL -->
+  <div
+    id="tripCompleteModal"
+    class="modal-overlay hidden"
+  >
+
+    <div class="trip-complete-modal">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>
+        Trip Completed!
+      </h2>
+
+      <p>
+        Great job! Your earnings have been added.
+      </p>
+
+
+      <div class="complete-amount">
+
+        <span>
+          Trip Earnings
+        </span>
+
+        <strong id="completeFare">
+          ₹320
+        </strong>
+
+      </div>
+
+
+      <div class="rating-title">
+        Rate your passenger
+      </div>
+
+
+      <div
+        id="ratingStars"
+        class="rating-stars"
+      >
+
+        <button type="button" data-rating="1">
+          ★
+        </button>
+
+        <button type="button" data-rating="2">
+          ★
+        </button>
+
+        <button type="button" data-rating="3">
+          ★
+        </button>
+
+        <button type="button" data-rating="4">
+          ★
+        </button>
+
+        <button type="button" data-rating="5">
+          ★
+        </button>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="finishTripBtn"
+        class="primary-btn full-btn"
+      >
+        Done
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- SOS MODAL -->
+  <div
+    id="sosModal"
+    class="modal-overlay hidden"
+  >
+
+    <div class="sos-modal">
+
+      <div class="sos-large">
+        🆘
+      </div>
+
+      <h2>
+        Emergency Help
+      </h2>
+
+      <p>
+        Are you sure you want to activate emergency assistance?
+      </p>
+
+
+      <div class="sos-options">
+
+        <button
+          type="button"
+          id="sosCallBtn"
+          class="sos-call"
+        >
+          📞 Call Emergency
+        </button>
+
+        <button
+          type="button"
+          id="sosCancelBtn"
+          class="secondary-btn"
+        >
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<script src="ridegodriver.js"></script>
+
+</body>
+</html>
